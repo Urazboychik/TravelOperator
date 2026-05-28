@@ -10,10 +10,9 @@ public class HomeController(TravelOperatorDbContext db) : Controller
     private const string AdminPassword = "1254";
     private const string AdminSessionKey = "AdminAuthenticated";
 
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
-        ViewData["Shell"] = "Public";
-        return View(await BuildDashboardModel());
+        return RedirectToAction(nameof(Customer));
     }
 
     public async Task<IActionResult> Customer()

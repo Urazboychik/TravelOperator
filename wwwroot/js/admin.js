@@ -17,6 +17,10 @@ const tabByHash = {
 
 let currentRole = "admin";
 
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
 function submitAdminPassword(password) {
   const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
   const form = document.createElement("form");
@@ -76,7 +80,6 @@ function setActiveTab(tabName) {
   activeRoleView.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.dataset.panel === tabName);
   });
-  activeRoleView.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function setRole(roleName) {
@@ -263,13 +266,14 @@ document.querySelectorAll(".panel, .metrics article, .module-grid article, .live
 
 if (document.querySelector('[data-role-view="admin"]')) {
   setRole("admin");
+  window.requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
 }
 
 const searchInput = document.querySelector("[data-search-input]");
 const searchSuggestions = document.querySelector("[data-search-suggestions]");
 
 function getPanelName(element) {
-  return element.closest("[data-panel]")?.dataset.panel ?? "overview";
+  return element.closest("[data-panel]")?.dataset.panel ?? "";
 }
 
 function getReadableText(element) {
@@ -288,8 +292,8 @@ function buildSearchIndex() {
     entries.push({
       element,
       title: cleanTitle,
-      subtitle: subtitle?.replace(/\s+/g, " ").trim() || "Раздел админ-панели",
-      tab: tab || getPanelName(element),
+      subtitle: subtitle?.replace(/\s+/g, " ").trim() || "Раздел сайта",
+      tab: tab ?? getPanelName(element),
       haystack: `${cleanTitle} ${subtitle ?? ""}`.toLowerCase(),
     });
   };
@@ -314,6 +318,10 @@ function buildSearchIndex() {
     pushEntry(element, element.querySelector("strong")?.textContent, getReadableText(element), getPanelName(element));
   });
 
+  document.querySelectorAll(".market-card, .steps-grid article, .catalog-card").forEach((element) => {
+    pushEntry(element, element.querySelector("h2, h3, strong")?.textContent, getReadableText(element), "");
+  });
+
   return entries;
 }
 
@@ -334,7 +342,7 @@ function hideSearchSuggestions() {
 }
 
 function focusSearchResult(result) {
-  if (result.tab) {
+  if (result.tab && document.querySelector(`[data-panel="${result.tab}"]`)) {
     setActiveTab(result.tab);
   }
 

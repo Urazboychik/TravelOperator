@@ -4,14 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TravelOperator</title>
-    <link rel="stylesheet" href="~/css/admin.css?v=22" />
+    <link rel="stylesheet" href="~/css/admin.css?v=23" />
 </head>
 <body class="@(ViewData["Shell"]?.ToString() == "Public" ? "public-shell" : "admin-shell")">
     @Html.AntiForgeryToken()
     @if (ViewData["Shell"]?.ToString() == "Public")
     {
         <header class="public-nav">
-            <a class="public-brand" asp-controller="Home" asp-action="Index"><span>TO</span> TravelOperator</a>
+            <a class="public-brand" asp-controller="Home" asp-action="Customer"><span>TO</span> TravelOperator</a>
             <nav>
                 <a asp-controller="Home" asp-action="Customer">Для туристов</a>
                 <a asp-controller="Home" asp-action="Business">Для бизнеса</a>
@@ -91,11 +91,6 @@
                 <button type="button" class="active" data-role="admin">Админ</button>
                 <button type="button" data-role="user">Пользователь</button>
             </div>
-            <label class="search">
-                <span>⌕</span>
-                <input type="search" placeholder="Поиск тура, заявки, партнера..." autocomplete="off" data-search-input />
-                <div class="search-suggestions" data-search-suggestions hidden></div>
-            </label>
             <div class="quick-actions">
                 <button type="button" class="ghost" data-action="export">Экспорт</button>
                 <button type="button" data-open="request-modal">+ Новая заявка</button>
@@ -108,6 +103,6 @@
     {
         <script>window.__toastMessage = @System.Text.Json.JsonSerializer.Serialize(toastMessage);</script>
     }
-    <script src="~/js/admin.js?v=22"></script>
+    <script src="~/js/admin.js?v=23"></script>
 </body>
 </html>

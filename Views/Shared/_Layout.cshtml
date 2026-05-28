@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TravelOperator</title>
-    <link rel="stylesheet" href="~/css/admin.css?v=19" />
+    <link rel="stylesheet" href="~/css/admin.css?v=22" />
 </head>
 <body class="@(ViewData["Shell"]?.ToString() == "Public" ? "public-shell" : "admin-shell")">
     @Html.AntiForgeryToken()
@@ -23,6 +23,23 @@
         <main class="public-main">
             @RenderBody()
         </main>
+        <div class="modal-backdrop" id="admin-login-modal" hidden>
+            <section class="modal-card admin-login-card">
+                <button type="button" class="modal-close" data-close>×</button>
+                <p class="eyebrow">Админ-панель</p>
+                <h2>Введите пароль</h2>
+                <p>Доступ к панели управления защищен демо-паролем.</p>
+                <form class="admin-form" asp-controller="Home" asp-action="AdminLogin" method="post">
+                    @Html.AntiForgeryToken()
+                    <label>
+                        Пароль администратора
+                        <input type="password" name="password" placeholder="Введите пароль" autocomplete="current-password" data-admin-password />
+                    </label>
+                    <button type="submit">Войти</button>
+                    <small class="admin-login-error" data-admin-login-error hidden>Неверный пароль</small>
+                </form>
+            </section>
+        </div>
     }
     else
     {
@@ -91,6 +108,6 @@
     {
         <script>window.__toastMessage = @System.Text.Json.JsonSerializer.Serialize(toastMessage);</script>
     }
-    <script src="~/js/admin.js?v=19"></script>
+    <script src="~/js/admin.js?v=22"></script>
 </body>
 </html>

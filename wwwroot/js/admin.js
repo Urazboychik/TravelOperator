@@ -130,14 +130,14 @@ document.addEventListener("click", (event) => {
   const adminGate = event.target.closest("[data-admin-gate]");
   if (adminGate) {
     event.preventDefault();
-    const password = window.prompt("Введите пароль администратора");
-    if (password === null) return;
-    if (password.trim() !== "1254") {
-      showToast("Неверный пароль администратора");
-      if (!toast) window.alert("Неверный пароль администратора");
-      return;
-    }
-    submitAdminPassword(password.trim());
+    openModal("admin-login-modal");
+    window.setTimeout(() => {
+      const passwordInput = document.querySelector("[data-admin-password]");
+      const error = document.querySelector("[data-admin-login-error]");
+      if (error) error.hidden = true;
+      if (passwordInput) passwordInput.value = "";
+      passwordInput?.focus();
+    }, 60);
     return;
   }
 

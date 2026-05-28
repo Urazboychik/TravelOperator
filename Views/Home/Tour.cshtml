@@ -1,0 +1,183 @@
+@model TourCatalogItem
+@{
+    ViewData["Title"] = Model.Name;
+    var programImages = Model.Slug switch
+    {
+        "baikal-ice-olkhon" => new[]
+        {
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Irkutsky_District%2C_Irkutsk_Oblast%2C_Russia_-_panoramio_(3).jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Ice_cave_on_Olkhon_island.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Khoboi_(31745553406).jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Baikal%2C_Cape_Burhan%2C_Shamanka_Rock%2C_Olkhon_Island%2C_Lake_Baikal%2C_Russia.jpg?width=1200"
+        },
+        "altai-adventure" => new[]
+        {
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Chuysky_Trakt_in_Ust-Sema.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/View_on_the_Inya_River_from_M52_highway.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Katun_river_in_Altai.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Chemal_village_on_Katun_river%2C_Altai.jpg?width=1200"
+        },
+        "kamchatka-volcano" => new[]
+        {
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Avachinsky_Volcano_in_Kamchatka_in_Russia_-_2787374.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Koryaksky_and_Avachinsky_volcanoes_from_the_ISS.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/WW_Avachinsky_Bay_and_surroundings.png?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Avachinsky_volcano_from_Petropavlovsk-Kamchatsky.jpg?width=1200"
+        },
+        "dagestan-canyon" => new[]
+        {
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Sarykum_Sand_Dune.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/%D0%94%D0%B0%D0%B3%D0%B5%D1%81%D1%82%D0%B0%D0%BD%2C_%D0%B4%D0%BE%D0%BB%D0%B8%D0%BD%D0%B0_%D1%80%D0%B5%D0%BA%D0%B8_%D0%A1%D1%83%D0%BB%D0%B0%D0%BA.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/%D0%AD%D0%BA%D1%81%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8F_%D0%B2_%D0%94%D0%B0%D0%B3%D0%B5%D1%81%D1%82%D0%B0%D0%BD_(56).jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Caspian_Sea_near_Derbent.jpg?width=1200"
+        },
+        "karelia-weekend" => new[]
+        {
+            "https://commons.wikimedia.org/wiki/Special:FilePath/0398Ga._Ruskeala_Park.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Kivach_waterfall.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Ladoga_Skerries_National_Park.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/0400Ga._Ruskeala.jpg?width=1200"
+        },
+        "sochi-family-resort" => new[]
+        {
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Sochi_Beach_arbour.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Sochi%2C_Krasnodar_Krai%2C_Russia_-_panoramio_(20).jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Rosa_Khutor_Alpine_Resort.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Sochi_Dendrarium.jpg?width=1200"
+        },
+        "cappadocia-premium" => new[]
+        {
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Entrance_of_a_cave_Hotel_Room_in_G%C3%B6reme.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/G%C3%B6reme_Valley_in_Cappadocia.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/View_over_Goreme_from_Sunset_Cave_Hotel_Terrace_-_Goreme_-_Cappadocia_-_Turkey_(5760943819).jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Cappadocia_Turkey-DSCF0364.jpg?width=1200"
+        },
+        "georgia-wine-route" => new[]
+        {
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Gergeti_Trinity_Church%2C_Georgia.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Sighnaghi%2C_Georgia.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Mtskheta%2C_Georgia.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Alazani_Valley%2C_Georgia.jpg?width=1200"
+        },
+        "uzbekistan-silk-road" => new[]
+        {
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Registan_square_Samarkand%2C_Uzbekistan%2C_at_night.jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Bukhara%2C_Uzbekistan_74_(103).jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Khiva_(30367017606).jpg?width=1200",
+            "https://commons.wikimedia.org/wiki/Special:FilePath/Palace_emir_Bukhara_162.jpg?width=1200"
+        },
+        _ => Model.Images
+    };
+    var imageFallbacks = string.Join("|", Model.Images.Concat(programImages).Distinct());
+    var programFallbacks = string.Join("|", programImages);
+}
+
+<section class="tour-detail-hero">
+    <div>
+        <a class="back-link" asp-controller="Home" asp-action="Offers">← Все туры</a>
+        <p class="eyebrow">@Model.Place</p>
+        <h1>@Model.Name</h1>
+        <p>@Model.Description</p>
+        <div class="tour-tags">
+            <span>★ @Model.Rating</span>
+            <span>@Model.Duration</span>
+            <span>@Model.Season</span>
+            <span>@Model.Level</span>
+        </div>
+        <div class="hero-actions">
+            <button type="button" data-open="request-modal">Забронировать</button>
+            <a class="action-button ghost-link" href="#program">Смотреть программу</a>
+        </div>
+    </div>
+    <div class="detail-gallery">
+        <img class="main-detail-image" src="@Model.Images[0]" alt="@Model.Name" loading="eager" decoding="async" fetchpriority="high" data-image-fallbacks="@imageFallbacks" />
+        <div>
+            @foreach (var image in Model.Images.Skip(1))
+            {
+                <img src="@image" alt="@Model.Name" loading="lazy" decoding="async" data-image-fallbacks="@imageFallbacks" />
+            }
+        </div>
+    </div>
+</section>
+
+<section class="tour-detail-grid">
+    <article class="panel">
+        <p class="eyebrow">О туре</p>
+        <h2>Что вас ждет</h2>
+        <p>@Model.Description</p>
+        <div class="tour-tags">
+            @foreach (var tag in Model.Tags)
+            {
+                <span>@tag</span>
+            }
+        </div>
+    </article>
+
+    <article class="panel price-panel">
+        <p class="eyebrow">Стоимость</p>
+        <h2>от @Model.Price</h2>
+        <p>@Model.Includes</p>
+        <button type="button" data-open="request-modal">Получить программу</button>
+    </article>
+</section>
+
+<section id="program" class="panel">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">Маршрут по дням</p>
+            <h2>Программа тура</h2>
+        </div>
+    </div>
+    <div class="program-interactive" data-program-viewer>
+        <div class="program-timeline">
+            @for (var i = 0; i < Model.Program.Length; i++)
+            {
+                var dayNumber = i + 1;
+                var dayImageIndex = i % programImages.Length;
+                var dayImage = programImages[dayImageIndex];
+                <button
+                    type="button"
+                    class="program-day @(i == 0 ? "active" : "")"
+                    data-day-title="День @dayNumber"
+                    data-day-text="@Model.Program[i]"
+                    data-day-image="@dayImage"
+                    data-day-image-index="@dayImageIndex"
+                    data-day-fallbacks="@programFallbacks">
+                    <span>@dayNumber</span>
+                    <div>
+                        <strong>День @dayNumber</strong>
+                        <p>@Model.Program[i]</p>
+                    </div>
+                </button>
+            }
+        </div>
+        <article class="program-preview">
+            <img src="@programImages[0]" alt="@Model.Name - день 1" loading="lazy" decoding="async" data-program-image data-image-fallbacks="@programFallbacks" />
+            <div>
+                <p class="eyebrow">Выбранный день</p>
+                <h3 data-program-title>День 1</h3>
+                <p data-program-text>@Model.Program[0]</p>
+                <div class="tour-tags">
+                    <span>@Model.Place</span>
+                    <span>@Model.Duration</span>
+                    <span>@Model.Level</span>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<div class="modal-backdrop" id="request-modal" hidden>
+    <section class="modal-card">
+        <button type="button" class="modal-close" data-close>×</button>
+        <p class="eyebrow">Заявка на бронирование</p>
+        <h2>@Model.Name</h2>
+        <form class="admin-form">
+            <label>Ваш email<input type="email" placeholder="mail@example.com" /></label>
+            <label>Количество туристов<input type="number" placeholder="2" /></label>
+            <button type="button" data-demo-submit>Отправить заявку</button>
+        </form>
+    </section>
+</div>
+
+<div class="toast" id="toast" hidden>Заявка по туру отправлена в демо-режиме</div>

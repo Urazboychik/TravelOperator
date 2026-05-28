@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Mountain lake travel illustration">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1d4ed8"/>
+      <stop offset=".45" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" x2="1">
+      <stop offset="0" stop-color="#06b6d4"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <circle cx="930" cy="150" r="90" fill="#fde68a" opacity=".9"/>
+  <path d="M0 520 240 230l160 210 140-160 220 260 150-190 290 300v150H0z" fill="#0f172a" opacity=".88"/>
+  <path d="M240 230 400 440l-80-28-62 38-48-50-80 32z" fill="#e0f2fe" opacity=".92"/>
+  <path d="M760 540 910 350l290 300v150H620z" fill="#111827" opacity=".92"/>
+  <path d="M910 350 1040 485l-90-24-44 38-48-52-70 30z" fill="#f8fafc" opacity=".9"/>
+  <rect y="610" width="1200" height="190" fill="url(#water)" opacity=".86"/>
+  <path d="M120 680c170-54 260 54 430 0s270-55 530 18" fill="none" stroke="#bae6fd" stroke-width="16" opacity=".42"/>
+  <path d="M70 735c260-72 430 48 690-12 150-35 250-28 380 18" fill="none" stroke="#fff" stroke-width="9" opacity=".28"/>
+</svg>

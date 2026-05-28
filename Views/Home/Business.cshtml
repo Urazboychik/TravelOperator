@@ -1,0 +1,79 @@
+@model DashboardViewModel
+@{
+    ViewData["Title"] = "Для бизнеса";
+    static string FormatMoney(decimal amount) => string.Format(System.Globalization.CultureInfo.GetCultureInfo("ru-RU"), "{0:N0} ₽", amount);
+}
+
+<section class="business-hero public-hero">
+    <div>
+        <p class="eyebrow">Платформа управления туроператором</p>
+        <h1>Платформа для туроператоров, агентств и предпринимателей в туризме</h1>
+        <p>Управляйте продажами, квотами, поставщиками, финансами, партнерами и маркетингом из единой системы.</p>
+        <div class="hero-actions">
+            <a class="action-button" asp-controller="Home" asp-action="Admin" data-admin-gate>Открыть демо админки</a>
+            <button type="button" class="ghost" data-open="request-modal">Запросить презентацию</button>
+        </div>
+    </div>
+    <div class="b2b-dashboard-preview">
+        <div><span>Выручка</span><strong>@FormatMoney(Model.RevenuePipeline)</strong></div>
+        <div><span>Агентства</span><strong>@Model.Agencies.Count</strong></div>
+        <div><span>Загрузка</span><strong>@Model.AverageLoad.ToString("P0")</strong></div>
+        <div><span>Операции онлайн</span><strong><span data-live-number>84</span></strong></div>
+    </div>
+</section>
+
+<section class="public-section">
+    <div class="section-heading">
+        <div><p class="eyebrow">Модули</p><h2>Функциональные области платформы</h2></div>
+        <a asp-controller="Home" asp-action="Admin" data-admin-gate>Показать больше</a>
+    </div>
+    <div class="business-modules">
+        @foreach (var module in Model.Modules)
+        {
+            <article>
+                <span class="module-icon">@module.Icon</span>
+                <h3>@module.Title</h3>
+                <p>@module.Description</p>
+                <strong>@module.Metric · @module.Accent</strong>
+            </article>
+        }
+    </div>
+</section>
+
+<section class="public-section split">
+    <div class="panel">
+        <p class="eyebrow">Операции в реальном времени</p>
+        <h2>Живая операционная лента</h2>
+        <div class="live-feed">
+            @foreach (var item in Model.Activity)
+            {
+                <article><span></span><div><strong>@item.Text</strong><small>@item.Time</small></div></article>
+            }
+        </div>
+    </div>
+    <div class="panel">
+        <p class="eyebrow">Для предпринимателей</p>
+        <h2>Что получает бизнес</h2>
+        <div class="task-list">
+            <article><strong>Быстрый запуск продаж</strong><small>витрина, заявки, CRM, платежи</small></article>
+            <article><strong>B2B кабинет</strong><small>агенты, комиссии, лимиты, прайсы</small></article>
+            <article><strong>Операционный контроль</strong><small>квоты, поставщики, документы</small></article>
+            <article><strong>Финансовая аналитика</strong><small>выручка, долги, комиссии, прогнозы</small></article>
+        </div>
+    </div>
+</section>
+
+<div class="modal-backdrop" id="request-modal" hidden>
+    <section class="modal-card">
+        <button type="button" class="modal-close" data-close>×</button>
+        <p class="eyebrow">Демо для бизнеса</p>
+        <h2>Запросить презентацию</h2>
+        <form class="admin-form">
+            <label>Компания<input type="text" placeholder="Название компании" /></label>
+            <label>Email<input type="email" placeholder="mail@example.com" /></label>
+            <button type="button" data-demo-submit>Запросить демо</button>
+        </form>
+    </section>
+</div>
+
+<div class="toast" id="toast" hidden>Запрос отправлен в демо-режиме</div>

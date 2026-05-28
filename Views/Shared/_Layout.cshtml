@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TravelOperator</title>
+    <link rel="stylesheet" href="~/css/admin.css?v=19" />
+</head>
+<body class="@(ViewData["Shell"]?.ToString() == "Public" ? "public-shell" : "admin-shell")">
+    @Html.AntiForgeryToken()
+    @if (ViewData["Shell"]?.ToString() == "Public")
+    {
+        <header class="public-nav">
+            <a class="public-brand" asp-controller="Home" asp-action="Index"><span>TO</span> TravelOperator</a>
+            <nav>
+                <a asp-controller="Home" asp-action="Customer">Для туристов</a>
+                <a asp-controller="Home" asp-action="Business">Для бизнеса</a>
+                <a asp-controller="Home" asp-action="Offers">Туры</a>
+                <a class="admin-gate-link" asp-controller="Home" asp-action="Admin" data-admin-gate aria-label="Админ-панель" title="Админ-панель">⚙</a>
+            </nav>
+            <button type="button" data-open="request-modal">Оставить заявку</button>
+        </header>
+        <main class="public-main">
+            @RenderBody()
+        </main>
+    }
+    else
+    {
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-mark">TO</span>
+            <div>
+                <strong>TravelOperator</strong>
+                <small>центр управления</small>
+            </div>
+        </div>
+
+        <nav class="admin-menu">
+            <span>Управление</span>
+            <a class="active" href="#dashboard"><b>⌁</b> Обзор бизнеса</a>
+            <a href="#requests"><b>◈</b> Бронирования</a>
+            <a href="#tours"><b>✦</b> Турпродукт</a>
+            <a href="#crm"><b>◎</b> CRM и клиенты</a>
+            <a href="#partners"><b>▣</b> Партнеры</a>
+
+            <span>Операции</span>
+            <a href="#suppliers"><b>◇</b> Поставщики</a>
+            <a href="#tasks"><b>✓</b> Задачи отдела</a>
+            <a href="#finance"><b>₽</b> Финансы</a>
+            <a href="#marketing"><b>↗</b> Маркетинг</a>
+            <a href="#reports"><b>≋</b> Аналитика</a>
+
+            <span>Система</span>
+            <a href="#settings"><b>⚙</b> Настройки</a>
+            <a href="#security"><b>□</b> Роли и доступы</a>
+        </nav>
+
+        <div class="admin-profile">
+            <div class="avatar">AP</div>
+            <div>
+                <strong>Admin Pro</strong>
+                <small>Владелец продукта</small>
+            </div>
+        </div>
+    </aside>
+
+    <main class="shell">
+        <header class="topbar">
+            <div>
+                <span class="topbar-label">Сегодня</span>
+                <strong>@DateTime.Now.ToString("dd MMMM yyyy")</strong>
+            </div>
+            <div class="role-switch" aria-label="Переключение роли">
+                <button type="button" class="active" data-role="admin">Админ</button>
+                <button type="button" data-role="user">Пользователь</button>
+            </div>
+            <label class="search">
+                <span>⌕</span>
+                <input type="search" placeholder="Поиск тура, заявки, партнера..." autocomplete="off" data-search-input />
+                <div class="search-suggestions" data-search-suggestions hidden></div>
+            </label>
+            <div class="quick-actions">
+                <button type="button" class="ghost" data-action="export">Экспорт</button>
+                <button type="button" data-open="request-modal">+ Новая заявка</button>
+            </div>
+        </header>
+        @RenderBody()
+    </main>
+    }
+    @if (TempData["Toast"] is string toastMessage)
+    {
+        <script>window.__toastMessage = @System.Text.Json.JsonSerializer.Serialize(toastMessage);</script>
+    }
+    <script src="~/js/admin.js?v=19"></script>
+</body>
+</html>

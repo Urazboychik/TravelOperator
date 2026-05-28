@@ -1,0 +1,19 @@
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Runtime SQLite sidecar files; keep traveloperator.db as demo data.
+*.db-shm
+*.db-wal
+
+# Local tooling/cache folders
+.tools/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

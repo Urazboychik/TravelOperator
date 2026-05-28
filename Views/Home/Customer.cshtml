@@ -1,0 +1,74 @@
+@model DashboardViewModel
+@{
+    ViewData["Title"] = "Для туристов";
+    var highlights = new[]
+    {
+        new { Name = "Байкал зимой", Text = "Ледовые гроты, хивус, Ольхон и камерные отели у Малого моря.", Price = "от 96 000 ₽", Image = "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Baikal_in_winter.jpg?width=1200", Icon = "❄" },
+        new { Name = "Сочи Премиум", Text = "Море, Красная Поляна, SPA-отели и семейные экскурсии.", Price = "от 118 000 ₽", Image = "https://commons.wikimedia.org/wiki/Special:FilePath/RIAN_archive_159143_Sochi.jpg?width=1200", Icon = "☀" },
+        new { Name = "Камчатка: вулканы", Text = "Вулканы, океан, термальные источники и экспедиционный формат.", Price = "от 248 000 ₽", Image = "https://commons.wikimedia.org/wiki/Special:FilePath/Koryaksky_volcano_Petropavlovsk-Kamchatsky_oct-2005.jpg?width=1200", Icon = "△" }
+    };
+}
+
+<section class="customer-hero public-hero">
+    <div>
+        <p class="eyebrow">Витрина путешествий</p>
+        <h1>Найдите тур, забронируйте онлайн и получите документы в личном кабинете</h1>
+        <p>Эта страница сфокусирована на продаже услуг туристу: предложения, доверие, быстрый подбор, оплата, ваучеры и поддержка.</p>
+        <div class="hero-actions">
+            <a class="action-button" asp-controller="Home" asp-action="Offers">Смотреть туры</a>
+            <button type="button" class="ghost" data-open="request-modal">Подобрать тур</button>
+        </div>
+    </div>
+    <div class="live-booking-card">
+        <span class="pulse-dot"></span>
+        <strong><span data-live-number>42</span> человека выбирают туры сейчас</strong>
+        <small>демо-обновление активности</small>
+    </div>
+</section>
+
+<section class="offer-showcase">
+    @foreach (var item in highlights)
+    {
+        <article class="market-card">
+            <div class="tour-cover">
+                <img src="@item.Image" alt="@item.Name" loading="lazy" decoding="async" />
+                <span class="rating-pill">@item.Icon</span>
+            </div>
+            <div>
+                <span class="badge">Хит продаж</span>
+                <h2>@item.Name</h2>
+                <p>@item.Text</p>
+                <strong>@item.Price</strong>
+                <button type="button" data-open="request-modal">Забронировать</button>
+            </div>
+        </article>
+    }
+</section>
+
+<section class="public-section">
+    <div class="section-heading">
+        <div><p class="eyebrow">Путь клиента</p><h2>Как покупается тур</h2></div>
+        <a asp-controller="Home" asp-action="Offers">Показать больше туров</a>
+    </div>
+    <div class="steps-grid">
+        <article><span>01</span><strong>Выбор направления</strong><p>Каталог, подборки, фильтры и консультация менеджера.</p></article>
+        <article><span>02</span><strong>Бронирование</strong><p>Фиксация мест, туристы, пожелания и подтверждение цены.</p></article>
+        <article><span>03</span><strong>Оплата</strong><p>Счет, онлайн-оплата, рассрочка или агентский договор.</p></article>
+        <article><span>04</span><strong>Документы</strong><p>Ваучеры, программа тура, памятка и поддержка в поездке.</p></article>
+    </div>
+</section>
+
+<div class="modal-backdrop" id="request-modal" hidden>
+    <section class="modal-card">
+        <button type="button" class="modal-close" data-close>×</button>
+        <p class="eyebrow">Персональное предложение</p>
+        <h2>Подобрать тур</h2>
+        <form class="admin-form">
+            <label>Куда хотите поехать<input type="text" placeholder="Байкал, Алтай, Сочи..." /></label>
+            <label>Количество туристов<input type="number" placeholder="2" /></label>
+            <button type="button" data-demo-submit>Получить предложение</button>
+        </form>
+    </section>
+</div>
+
+<div class="toast" id="toast" hidden>Заявка отправлена в демо-режиме</div>

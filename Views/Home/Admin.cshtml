@@ -1,0 +1,168 @@
+@model DashboardViewModel
+@{
+    ViewData["Title"] = "Админ-панель";
+    static string FormatMoney(decimal amount) => string.Format(System.Globalization.CultureInfo.GetCultureInfo("ru-RU"), "{0:N0} ₽", amount);
+    static string RequestStage(string stage) => stage switch
+    {
+        "Confirmed" => "Подтверждено",
+        "Negotiation" => "Переговоры",
+        "New" => "Новая",
+        _ => stage
+    };
+    static string TourStatus(string status) => status switch
+    {
+        "Active" => "Активен",
+        "Hot" => "Горящий",
+        _ => status
+    };
+    static string TourName(string name) => name switch
+    {
+        "Golden Ring Premium" => "Золотое кольцо Премиум",
+        "Altai Adventure" => "Алтай Adventure",
+        "Black Sea Family" => "Сочи для семьи",
+        _ => name
+    };
+    static string TourDestination(string destination) => destination switch
+    {
+        "Russia, Golden Ring" => "Россия, Золотое кольцо",
+        "Russia, Altai" => "Россия, Алтай",
+        "Sochi" => "Россия, Сочи",
+        _ => destination
+    };
+    static string PriorityClass(string priority) => priority switch
+    {
+        "Высокий" => "high",
+        "Средний" => "medium",
+        "Низкий" => "low",
+        _ => priority.ToLowerInvariant()
+    };
+}
+
+<section class="screen-header">
+    <div>
+        <p class="eyebrow">Рабочее место администратора</p>
+        <h1>Управление туроператорской платформой</h1>
+        <p>Админка разделена на понятные области: продажи, турпродукт, операции, финансы и система. Каждый блок ведет к отдельной функциональной зоне.</p>
+    </div>
+    <div class="tabbar" aria-label="Разделы приложения">
+        <button type="button" class="active" data-tab="overview">Обзор</button>
+        <button type="button" data-tab="sales">Продажи</button>
+        <button type="button" data-tab="product">Туры</button>
+        <button type="button" data-tab="operations">Операции</button>
+        <button type="button" data-tab="finance">Финансы</button>
+        <button type="button" data-tab="settings">Система</button>
+    </div>
+</section>
+
+<div class="workspace-tabs" data-role-view="admin">
+    <div class="tab-panel active" data-panel="overview">
+        <section class="metrics">
+            <article data-tab="sales"><i>◈</i><span>Воронка продаж</span><strong>@FormatMoney(Model.RevenuePipeline)</strong><small>продажи и заявки</small></article>
+            <article data-tab="product"><span>Туры</span><strong>@Model.Tours.Count</strong><small>активные продукты</small></article>
+            <article data-tab="operations"><span>Свободные места</span><strong>@Model.AvailableSeats</strong><small>квоты и поставщики</small></article>
+            <article data-tab="finance"><span>Загрузка</span><strong>@Model.AverageLoad.ToString("P0")</strong><small>операционный KPI</small></article>
+        </section>
+
+        <section class="admin-module-board">
+            @foreach (var module in Model.Modules)
+            {
+                <article>
+                    <span class="module-icon">@module.Icon</span>
+                    <h2>@module.Title</h2>
+                    <p>@module.Description</p>
+                    <strong>@module.Metric · @module.Accent</strong>
+                    <button type="button" data-tab="@(module.Title.Contains("Финансы") ? "finance" : module.Title.Contains("тур") || module.Title.Contains("Каталог") ? "product" : module.Title.Contains("Бронир") || module.Title.Contains("CRM") ? "sales" : "operations")">Показать больше</button>
+                </article>
+            }
+        </section>
+    </div>
+
+    <div class="tab-panel" data-panel="sales">
+        <section class="workspace-grid">
+            <div class="panel">
+                <div class="panel-heading"><div><p class="eyebrow">Воронка продаж</p><h2>Заявки</h2></div><button type="button" data-open="request-modal">+ Заявка</button></div>
+                <table>
+                    <thead><tr><th>Клиент</th><th>Тур</th><th>Статус</th><th>Сумма</th></tr></thead>
+                    <tbody>
+                        @foreach (var request in Model.Requests)
+                        {
+                            <tr><td><strong>@request.CustomerName</strong><small>@request.AgencyName</small></td><td>@request.TourName</td><td><span class="status">@RequestStage(request.Stage)</span></td><td>@FormatMoney(request.TotalAmount)</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <aside class="panel">
+                <p class="eyebrow">Продажи в реальном времени</p>
+                <h2>Активность продаж</h2>
+                <div class="live-feed" data-live-feed>
+                    @foreach (var item in Model.Activity)
+                    {
+                        <article><span></span><div><strong>@item.Text</strong><small>@item.Time</small></div></article>
+                    }
+                </div>
+            </aside>
+        </section>
+    </div>
+
+    <div class="tab-panel" data-panel="product">
+        <section class="panel">
+            <div class="panel-heading"><div><p class="eyebrow">Турпродукт</p><h2>Туры и квоты</h2></div><a class="action-button" asp-controller="Home" asp-action="Offers">Открыть каталог</a></div>
+            <div class="cards-grid">
+                @foreach (var tour in Model.Tours)
+                {
+                    var percent = (int)Math.Round((double)tour.BookedSeats / tour.Capacity * 100);
+                    <article class="tour-card"><div class="tour-visual"><span class="badge">@TourStatus(tour.Status)</span><strong>@percent%</strong></div><h3>@TourName(tour.Name)</h3><p>@TourDestination(tour.Destination)</p><div class="progress"><i style="width:@percent%"></i></div></article>
+                }
+            </div>
+        </section>
+    </div>
+
+    <div class="tab-panel" data-panel="operations">
+        <section class="split">
+            <div class="panel">
+                <p class="eyebrow">Поставщики</p><h2>Поставщики</h2>
+                <div class="supplier-list">
+                    @foreach (var supplier in Model.Suppliers)
+                    {
+                        <article><div><strong>@supplier.Name</strong><small>@supplier.Type · @supplier.Note</small></div><span class="status">@supplier.Status</span><div class="supplier-score"><div class="progress"><i style="width:@supplier.Score%"></i></div><b>@supplier.Score</b></div></article>
+                    }
+                </div>
+            </div>
+            <div class="panel">
+                <p class="eyebrow">Операционные задачи</p><h2>Задачи отделов</h2>
+                <div class="task-list">
+                    @foreach (var task in Model.OperationTasks)
+                    {
+                        <article><span class="priority @PriorityClass(task.Priority)">@task.Priority</span><strong>@task.Title</strong><small>@task.Department · @task.Due</small></article>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="tab-panel" data-panel="finance">
+        <section class="split">
+            <div class="panel finance-panel"><p class="eyebrow">Финансы</p><h2>Финансы</h2><div class="finance-grid">@foreach (var item in Model.Finance) { <article><span>@item.Title</span><strong>@FormatMoney(item.Amount)</strong><small>@item.Trend к прошлому месяцу</small></article> }</div></div>
+            <div class="panel"><p class="eyebrow">Маркетинг</p><h2>Кампании</h2><div class="campaigns">@foreach (var campaign in Model.Campaigns) { <article><div><strong>@campaign.Name</strong><small>@campaign.Channel</small></div><span>@campaign.Leads лидов</span><b>@campaign.Bookings броней</b></article> }</div></div>
+        </section>
+    </div>
+
+    <div class="tab-panel" data-panel="settings">
+        <section class="panel settings-panel"><div><p class="eyebrow">Система</p><h2>Настройки и роли</h2><p>Доступы, интеграции, документы, валюты, уведомления и партнерские правила.</p></div><div class="settings-cards"><article><strong>Роли</strong><span>Администратор, продажи, финансы, агент</span></article><article><strong>Интеграции</strong><span>Почта, Telegram, платежи</span></article><article><strong>Документы</strong><span>Ваучеры, счета, договоры</span></article><article><strong>Партнерские правила</strong><span>Комиссии, лимиты, прайсы</span></article></div></section>
+    </div>
+</div>
+
+<div class="modal-backdrop" id="request-modal" hidden>
+    <section class="modal-card">
+        <button type="button" class="modal-close" data-close>×</button>
+        <p class="eyebrow">Отдел продаж</p>
+        <h2>Новая заявка</h2>
+        <form class="admin-form">
+            <label>Клиент<input type="text" placeholder="Имя клиента или группа" /></label>
+            <label>Тур<input type="text" placeholder="Выберите тур" /></label>
+            <button type="button" data-demo-submit>Создать демо-заявку</button>
+        </form>
+    </section>
+</div>
+
+<div class="toast" id="toast" hidden>Действие выполнено в демо-режиме</div>

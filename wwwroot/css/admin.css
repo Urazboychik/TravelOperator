@@ -2445,6 +2445,24 @@ td strong {
   transform: rotate(24deg);
 }
 
+.admin-login-card {
+  max-width: 430px;
+}
+
+.admin-login-card p:not(.eyebrow) {
+  color: #d8e2f3;
+}
+
+.admin-login-error {
+  display: block;
+  color: #fda4af;
+  font-weight: 800;
+}
+
+.admin-login-error[hidden] {
+  display: none !important;
+}
+
 .search {
   position: relative;
   flex: 1 1 360px;

@@ -14,6 +14,11 @@
         <p class="eyebrow">Витрина путешествий</p>
         <h1>Найдите тур, забронируйте онлайн и получите документы в личном кабинете</h1>
         <p>Эта страница сфокусирована на продаже услуг туристу: предложения, доверие, быстрый подбор, оплата, ваучеры и поддержка.</p>
+        <label class="public-search">
+            <span>⌕</span>
+            <input type="search" placeholder="Найти тур: Байкал, Сочи, Камчатка..." autocomplete="off" data-search-input />
+            <div class="search-suggestions" data-search-suggestions hidden></div>
+        </label>
         <div class="hero-actions">
             <a class="action-button" asp-controller="Home" asp-action="Offers">Смотреть туры</a>
             <button type="button" class="ghost" data-open="request-modal">Подобрать тур</button>

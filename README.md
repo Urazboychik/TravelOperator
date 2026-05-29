@@ -88,15 +88,33 @@ http://localhost:5000
 - Интерфейс адаптирован под презентацию дипломного проекта: акцент сделан на наглядность, понятную навигацию и визуальное разделение ролей пользователя.
 - Административная часть содержит имитацию реальных рабочих процессов: заявки, поставщики, задачи, маркетинговые кампании, финансы и настройки.
 
-## Публикация в интернете (Render)
+## Публикация в интернете (постоянный URL)
 
-В репозитории есть `Dockerfile` и `render.yaml` для постоянного хостинга на [Render](https://render.com) (бесплатный план).
+### Fly.io (рекомендуется)
 
-1. Зарегистрируйтесь на [render.com](https://render.com) и подключите GitHub.
-2. Откройте [Deploy to Render](https://render.com/deploy?repo=https://github.com/Urazboychik/TravelOperator) или создайте **New → Blueprint** и укажите репозиторий `Urazboychik/TravelOperator`.
-3. Дождитесь сборки (5–10 минут). Render выдаст постоянный URL вида `https://traveloperator.onrender.com`.
+В репозитории настроены `Dockerfile`, `fly.toml` и GitHub Actions (`.github/workflows/deploy-fly.yml`).
 
-На бесплатном плане сервис «засыпает» после ~15 минут без посещений; первый заход после паузы может занять 30–60 секунд.
+1. Один раз: [регистрация на Fly.io через GitHub](https://fly.io/app/sign-up).
+2. Установите [flyctl](https://fly.io/docs/flyctl/install/) и выполните в терминале:
+
+```powershell
+fly auth login
+fly apps create traveloperator-urazboy --org personal
+fly auth token
+```
+
+3. Добавьте токен в секреты GitHub (подставьте свой токен):
+
+```powershell
+gh secret set FLY_API_TOKEN -b"ВАШ_ТОКЕН" -R Urazboychik/TravelOperator
+gh workflow run deploy-fly.yml -R Urazboychik/TravelOperator
+```
+
+Постоянный адрес: `https://traveloperator-urazboy.fly.dev`
+
+### Render (альтернатива)
+
+Если Render доступен из вашей сети: `Dockerfile` + `render.yaml`, [Deploy to Render](https://render.com/deploy?repo=https://github.com/Urazboychik/TravelOperator).
 
 ## Статус
 

@@ -90,11 +90,19 @@ http://localhost:5000
 
 ## Публикация в интернете (бесплатно, без карты)
 
-### Render (рекомендуется)
+### Быстрый публичный URL (без регистрации)
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start-public.ps1
+```
+
+Скрипт поднимает сайт и туннель **localhost.run** — карта не нужна. Адрес появится в консоли (вида `https://xxxx.lhr.life`).
+
+### Render (постоянный URL, без карты)
 
 Карта **не нужна**. Бесплатный план, Docker, автодеплой из GitHub.
 
-1. Откройте: [Deploy to Render](https://render.com/deploy?repo=https://github.com/Urazboychik/TravelOperator)
+1. Откройте: [Deploy to Render](https://render.com/deploy?repo=https://github.com/SaShochka/TravelOperator)
 2. Войдите через GitHub → выберите план **Free** → **Apply**.
 3. Через 3–5 минут сайт будет по адресу вида `https://traveloperator.onrender.com`
 

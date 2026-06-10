@@ -88,33 +88,31 @@ http://localhost:5000
 - Интерфейс адаптирован под презентацию дипломного проекта: акцент сделан на наглядность, понятную навигацию и визуальное разделение ролей пользователя.
 - Административная часть содержит имитацию реальных рабочих процессов: заявки, поставщики, задачи, маркетинговые кампании, финансы и настройки.
 
-## Публикация в интернете (постоянный URL)
+## Публикация в интернете (бесплатно, без карты)
 
-### Fly.io (рекомендуется)
+### Render (рекомендуется)
 
-В репозитории настроены `Dockerfile`, `fly.toml` и GitHub Actions (`.github/workflows/deploy-fly.yml`).
+Карта **не нужна**. Бесплатный план, Docker, автодеплой из GitHub.
 
-1. Один раз: [регистрация на Fly.io через GitHub](https://fly.io/app/sign-up).
-2. Установите [flyctl](https://fly.io/docs/flyctl/install/) и выполните в терминале:
+1. Откройте: [Deploy to Render](https://render.com/deploy?repo=https://github.com/Urazboychik/TravelOperator)
+2. Войдите через GitHub → выберите план **Free** → **Apply**.
+3. Через 3–5 минут сайт будет по адресу вида `https://traveloperator.onrender.com`
 
-```powershell
-fly auth login
-fly apps create traveloperator-urazboy --org personal
-fly auth token
-```
+Ограничение free: сервис «засыпает» после 15 минут без посещений, первый запрос занимает ~1 минуту.
 
-3. Добавьте токен в секреты GitHub (подставьте свой токен):
+### Hugging Face Spaces (альтернатива, без карты)
 
-```powershell
-gh secret set FLY_API_TOKEN -b"ВАШ_ТОКЕН" -R Urazboychik/TravelOperator
-gh workflow run deploy-fly.yml -R Urazboychik/TravelOperator
-```
+1. Регистрация: [huggingface.co/join](https://huggingface.co/join) (можно через GitHub).
+2. [Создать Space](https://huggingface.co/new-space) → SDK **Docker** → имя `TravelOperator`.
+3. Settings → Access Tokens → создать токен с правом **write**.
+4. В GitHub репозитория: Settings → Secrets → `HF_TOKEN` = ваш токен.
+5. Actions → **Deploy to Hugging Face Space** → Run workflow.
 
-Постоянный адрес: `https://traveloperator-urazboy.fly.dev`
+Адрес: `https://huggingface.co/spaces/Urazboychik/TravelOperator`
 
-### Render (альтернатива)
+### Fly.io (нужна привязка карты)
 
-Если Render доступен из вашей сети: `Dockerfile` + `render.yaml`, [Deploy to Render](https://render.com/deploy?repo=https://github.com/Urazboychik/TravelOperator).
+Только если добавлена карта в [Fly Billing](https://fly.io/dashboard). См. `fly.toml` и `.github/workflows/deploy-fly.yml`.
 
 ## Статус
 

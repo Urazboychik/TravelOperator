@@ -4,8 +4,12 @@ services:
     runtime: docker
     plan: free
     region: frankfurt
-    healthCheckPath: /
+    healthCheckPath: /Home/Customer
     autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:8080

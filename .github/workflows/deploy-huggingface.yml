@@ -24,7 +24,10 @@ jobs:
             echo "HF_TOKEN secret is not set. Create a free Hugging Face account and add a write token."
             exit 1
           fi
+          cp huggingface-space-README.md README.md
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git remote add space "https://SaShochka:${HF_TOKEN}@huggingface.co/spaces/SaShochka/TravelOperator" || true
+          git add README.md
+          git commit -m "Prepare Hugging Face Space metadata" || true
+          git remote add space "https://krammyYds:${HF_TOKEN}@huggingface.co/spaces/krammyYds/TravelOperator" || true
           git push --force space HEAD:main

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using TravelOperator.Data;
 
@@ -17,9 +18,29 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
     options.KnownProxies.Clear();
 });
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=traveloperator.db";
+if (!builder.Environment.IsDevelopment())
+{
+    var sqliteConnection = new SqliteConnectionStringBuilder(connectionString);
+    if (!string.Equals(sqliteConnection.DataSource, ":memory:", StringComparison.OrdinalIgnoreCase) &&
+        !Path.IsPathRooted(sqliteConnection.DataSource))
+    {
+        var sourcePath = Path.Combine(AppContext.BaseDirectory, sqliteConnection.DataSource);
+        var targetPath = Path.Combine(Path.GetTempPath(), Path.GetFileName(sqliteConnection.DataSource));
+
+        if (File.Exists(sourcePath) && !File.Exists(targetPath))
+        {
+            File.Copy(sourcePath, targetPath);
+        }
+
+        sqliteConnection.DataSource = targetPath;
+        connectionString = sqliteConnection.ToString();
+    }
+}
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<TravelOperatorDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlite(connectionString));
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromHours(2);

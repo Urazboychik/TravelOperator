@@ -68,8 +68,8 @@ public static class TourCatalog
             ["вулканы", "океан", "термы"],
             [
                 "https://commons.wikimedia.org/wiki/Special:FilePath/Koryaksky_volcano_Petropavlovsk-Kamchatsky_oct-2005.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Avachinsky_volcano.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Kamchatka_volcano.jpg?width=1200"
+                "https://commons.wikimedia.org/wiki/Special:FilePath/Kamchatka_three_brothers_rdfr.jpg?width=1200",
+                "https://commons.wikimedia.org/wiki/Special:FilePath/WW_Avachinsky_Bay_and_surroundings.png?width=1200"
             ],
             ["Петропавловск-Камчатский", "Подъем к вулканическим плато", "Океанская прогулка", "Термальные источники"],
             "гиды, трансферы, проживание, завтраки, групповое снаряжение"),

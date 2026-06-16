@@ -200,16 +200,16 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const demoSubmit = event.target.closest("[data-demo-submit]");
-  if (demoSubmit) {
-    closeModal(demoSubmit);
-    showToast("Действие выполнено в демо-режиме");
+  const formSubmit = event.target.closest("[data-form-submit]");
+  if (formSubmit) {
+    closeModal(formSubmit);
+    showToast("Действие выполнено");
     return;
   }
 
   const exportButton = event.target.closest('[data-action="export"]');
   if (exportButton) {
-    showToast("Демо-отчет подготовлен к экспорту");
+    showToast("Отчет подготовлен к экспорту");
     return;
   }
 

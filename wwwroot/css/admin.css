@@ -1598,6 +1598,8 @@ button.ghost {
 
 .audience-grid span,
 .steps-grid span {
+  display: inline-block;
+  margin-right: 8px;
   color: #22d3ee;
   font-weight: 900;
 }

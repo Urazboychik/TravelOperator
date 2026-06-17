@@ -1692,7 +1692,14 @@ button.ghost {
   align-items: center;
 }
 
+.live-booking-card strong,
 .live-booking-card small {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.live-booking-card small {
+  flex: 1 1 160px;
   margin-left: 0;
 }
 

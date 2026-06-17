@@ -1708,7 +1708,7 @@ button.ghost {
   margin-left: 8px;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1400px) {
   .public-hero {
     grid-template-columns: 1fr;
   }

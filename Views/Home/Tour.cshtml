@@ -1,75 +1,8 @@
 @model TourCatalogItem
 @{
     ViewData["Title"] = Model.Name;
-    var programImages = Model.Slug switch
-    {
-        "baikal-ice-olkhon" => new[]
-        {
-            TourImageAssets.BaikalIce,
-            TourImageAssets.BaikalOlkhon,
-            TourImageAssets.BaikalShamanka,
-            TourImageAssets.BaikalIrkutsk
-        },
-        "altai-adventure" => new[]
-        {
-            TourImageAssets.AltaiRoad,
-            TourImageAssets.AltaiMountains,
-            TourImageAssets.AltaiRiver,
-            TourImageAssets.AltaiLodge
-        },
-        "kamchatka-volcano" => new[]
-        {
-            TourImageAssets.KamchatkaVolcano,
-            TourImageAssets.KamchatkaPlateau,
-            TourImageAssets.KamchatkaOcean,
-            TourImageAssets.KamchatkaThermal
-        },
-        "dagestan-canyon" => new[]
-        {
-            TourImageAssets.DagestanDune,
-            TourImageAssets.DagestanCanyon,
-            TourImageAssets.DagestanAul,
-            TourImageAssets.DagestanCaspian
-        },
-        "karelia-weekend" => new[]
-        {
-            TourImageAssets.KareliaForest,
-            TourImageAssets.KareliaRuskeala,
-            TourImageAssets.KareliaWaterfall,
-            TourImageAssets.KareliaSortavala
-        },
-        "sochi-family-resort" => new[]
-        {
-            TourImageAssets.SochiResort,
-            TourImageAssets.SochiMountains,
-            TourImageAssets.SochiSea,
-            TourImageAssets.SochiFamily
-        },
-        "cappadocia-premium" => new[]
-        {
-            TourImageAssets.CappadociaHotel,
-            TourImageAssets.CappadociaValley,
-            TourImageAssets.CappadociaBalloons,
-            TourImageAssets.CappadociaTasting
-        },
-        "georgia-wine-route" => new[]
-        {
-            TourImageAssets.GeorgiaTbilisi,
-            TourImageAssets.GeorgiaKakheti,
-            TourImageAssets.GeorgiaMountains,
-            TourImageAssets.GeorgiaGastro
-        },
-        "uzbekistan-silk-road" => new[]
-        {
-            TourImageAssets.UzbekistanRegistan,
-            TourImageAssets.UzbekistanBukhara,
-            TourImageAssets.UzbekistanKhiva,
-            TourImageAssets.UzbekistanWorkshop
-        },
-        _ => Model.Images
-    };
-    var imageFallbacks = string.Join("|", Model.Images.Concat(programImages).Distinct());
-    var programFallbacks = string.Join("|", programImages);
+    var galleryFallbacks = string.Join("|", Model.Images);
+    var programFallbacks = string.Join("|", Model.ProgramImages.Distinct());
 }
 
 <section class="tour-detail-hero">
@@ -90,11 +23,11 @@
         </div>
     </div>
     <div class="detail-gallery">
-        <img class="main-detail-image" src="@Model.Images[0]" alt="@Model.Name" loading="eager" decoding="async" fetchpriority="high" data-image-fallbacks="@imageFallbacks" />
+        <img class="main-detail-image" src="@Model.Images[0]" alt="@Model.Name" loading="eager" decoding="async" fetchpriority="high" data-image-fallbacks="@galleryFallbacks" />
         <div>
             @foreach (var image in Model.Images.Skip(1))
             {
-                <img src="@image" alt="@Model.Name" loading="lazy" decoding="async" data-image-fallbacks="@imageFallbacks" />
+                <img src="@image" alt="@Model.Name" loading="lazy" decoding="async" data-image-fallbacks="@galleryFallbacks" />
             }
         </div>
     </div>
@@ -133,15 +66,14 @@
             @for (var i = 0; i < Model.Program.Length; i++)
             {
                 var dayNumber = i + 1;
-                var dayImageIndex = i % programImages.Length;
-                var dayImage = programImages[dayImageIndex];
+                var dayImage = Model.ProgramImages[i];
                 <button
                     type="button"
                     class="program-day @(i == 0 ? "active" : "")"
                     data-day-title="День @dayNumber"
                     data-day-text="@Model.Program[i]"
                     data-day-image="@dayImage"
-                    data-day-image-index="@dayImageIndex"
+                    data-day-image-index="@i"
                     data-day-fallbacks="@programFallbacks">
                     <span>@dayNumber</span>
                     <div>
@@ -152,7 +84,7 @@
             }
         </div>
         <article class="program-preview">
-            <img src="@programImages[0]" alt="@Model.Name - день 1" loading="lazy" decoding="async" data-program-image data-image-fallbacks="@programFallbacks" />
+            <img src="@Model.ProgramImages[0]" alt="@Model.Name - день 1" loading="lazy" decoding="async" data-program-image data-image-fallbacks="@programFallbacks" />
             <div>
                 <p class="eyebrow">Выбранный день</p>
                 <h3 data-program-title>День 1</h3>

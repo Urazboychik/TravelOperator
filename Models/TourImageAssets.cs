@@ -16,6 +16,25 @@ public static class TourImageAssets
         return Thumb(jpgName);
     }
 
+    /// <summary>
+    /// Распределяет фото по дням программы: сначала кадры, которых нет в галерее тура.
+    /// </summary>
+    public static string[] ForProgramDays(string[] galleryImages, string[] pool, int dayCount)
+    {
+        var gallerySet = new HashSet<string>(galleryImages);
+        var ordered = pool
+            .Where(image => !gallerySet.Contains(image))
+            .Concat(pool)
+            .Distinct()
+            .ToArray();
+
+        var result = new string[dayCount];
+        for (var i = 0; i < dayCount; i++)
+            result[i] = ordered[i % ordered.Length];
+
+        return result;
+    }
+
     // Байкал
     public static string BaikalIce => Local("baikal-winter.jpg");
     public static string BaikalOlkhon => Local("baikal-ice-cave.jpg");

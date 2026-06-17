@@ -524,6 +524,11 @@ td small {
   box-shadow: 0 0 0 6px rgba(18, 185, 129, 0.12);
 }
 
+.live-feed small {
+  display: inline-block;
+  margin-left: 8px;
+}
+
 .cards-grid {
   grid-template-columns: repeat(3, minmax(280px, 1fr));
   gap: 24px;
@@ -1680,6 +1685,22 @@ button.ghost {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.live-booking-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.live-booking-card small {
+  margin-left: 0;
+}
+
+.floating-live-card small {
+  display: inline-block;
+  margin-left: 8px;
+}
+
 .admin-module-board button {
   margin-top: 16px;
 }
@@ -2517,6 +2538,10 @@ td strong {
   background: rgba(8, 13, 28, 0.96);
   box-shadow: 0 26px 80px rgba(0, 0, 0, 0.42);
   backdrop-filter: blur(18px);
+}
+
+.search-suggestions[hidden] {
+  display: none;
 }
 
 .search-suggestions button {

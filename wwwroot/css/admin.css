@@ -1219,8 +1219,12 @@ body {
 .program-timeline {
   display: grid;
   gap: 12px;
+  align-items: stretch;
+  align-content: start;
+  grid-auto-rows: max-content;
   max-height: 520px;
   overflow-y: auto;
+  scrollbar-gutter: stable;
   padding-right: 4px;
 }
 
@@ -1228,6 +1232,8 @@ body {
   display: grid;
   grid-template-columns: 52px minmax(0, 1fr);
   gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
   padding: 18px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 22px;
@@ -1235,15 +1241,18 @@ body {
   color: var(--ink);
   text-align: left;
   cursor: pointer;
-  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
 }
 
-.program-day:hover,
+.program-day:hover:not(.active) {
+  border-color: rgba(34, 211, 238, 0.32);
+  background: rgba(34, 211, 238, 0.07);
+}
+
 .program-day.active {
-  transform: translateX(6px);
-  border-color: rgba(34, 211, 238, 0.42);
-  background: rgba(34, 211, 238, 0.1);
-  box-shadow: 0 18px 45px rgba(34, 211, 238, 0.1);
+  border-color: rgba(34, 211, 238, 0.55);
+  background: rgba(34, 211, 238, 0.12);
+  box-shadow: inset 3px 0 0 #22d3ee, 0 12px 32px rgba(34, 211, 238, 0.08);
 }
 
 .program-day > span {
@@ -1909,6 +1918,29 @@ button:hover {
 
 button:hover::after {
   animation: shine 0.9s ease;
+}
+
+button.program-day {
+  position: static;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 22px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: none;
+  overflow: visible;
+  transform: none;
+  font-weight: inherit;
+  min-height: max-content;
+}
+
+button.program-day::after {
+  display: none;
+}
+
+button.program-day:hover,
+button.program-day.active {
+  transform: none;
 }
 
 .ghost {

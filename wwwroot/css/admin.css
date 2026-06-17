@@ -1488,6 +1488,10 @@ button.ghost {
   box-shadow: var(--shadow);
 }
 
+.public-hero {
+  grid-template-columns: 1fr;
+}
+
 .landing-hero h1,
 .public-hero h1 {
   font-size: clamp(44px, 6vw, 88px);

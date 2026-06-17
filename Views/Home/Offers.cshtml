@@ -18,10 +18,7 @@
     {
         <article class="catalog-card">
             <div class="tour-cover">
-                @foreach (var image in tour.Images)
-                {
-                    <img src="@image" alt="@tour.Name" />
-                }
+                <img src="@TourImageAssets.Catalog(tour.Images[0])" alt="@tour.Name" loading="lazy" decoding="async" width="480" height="320" />
                 <span class="rating-pill">★ @tour.Rating</span>
                 <span class="season-pill">@tour.Season</span>
             </div>

@@ -6,6 +6,15 @@ namespace TravelOperator.Models;
 public static class TourImageAssets
 {
     private static string Local(string fileName) => $"/images/tours/{fileName}";
+    private static string Thumb(string fileName) => $"/images/tours/thumb/{fileName}";
+
+    /// <summary>Лёгкое превью для карточек каталога.</summary>
+    public static string Catalog(string detailPath)
+    {
+        var fileName = Path.GetFileName(detailPath);
+        var jpgName = Path.ChangeExtension(fileName, ".jpg");
+        return Thumb(jpgName);
+    }
 
     // Байкал
     public static string BaikalIce => Local("baikal-winter.jpg");
@@ -22,7 +31,7 @@ public static class TourImageAssets
     // Камчатка
     public static string KamchatkaVolcano => Local("kamchatka-koryaksky.jpg");
     public static string KamchatkaPlateau => Local("kamchatka-avacha.jpg");
-    public static string KamchatkaOcean => Local("kamchatka-bay.png");
+    public static string KamchatkaOcean => Local("kamchatka-bay.jpg");
     public static string KamchatkaThermal => Local("kamchatka-brothers.jpg");
 
     // Дагестан

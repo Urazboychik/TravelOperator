@@ -64,7 +64,16 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
     app.UseHttpsRedirection();
 }
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = context =>
+    {
+        if (context.Context.Request.Path.StartsWithSegments("/images"))
+        {
+            context.Context.Response.Headers.CacheControl = "public,max-age=604800,immutable";
+        }
+    }
+});
 app.UseRouting();
 app.UseSession();
 

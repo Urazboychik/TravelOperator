@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = Model.Name;
     var galleryFallbacks = string.Join("|", Model.Images);
-    var programFallbacks = string.Join("|", Model.ProgramImages.Distinct());
 }
 
 <section class="tour-detail-hero">
@@ -73,8 +72,7 @@
                     data-day-title="День @dayNumber"
                     data-day-text="@Model.Program[i]"
                     data-day-image="@dayImage"
-                    data-day-image-index="@i"
-                    data-day-fallbacks="@programFallbacks">
+                    data-day-image-index="@i">
                     <span>@dayNumber</span>
                     <div>
                         <strong>День @dayNumber</strong>
@@ -84,7 +82,7 @@
             }
         </div>
         <article class="program-preview">
-            <img src="@Model.ProgramImages[0]" alt="@Model.Name - день 1" loading="lazy" decoding="async" data-program-image data-image-fallbacks="@programFallbacks" />
+            <img src="@Model.ProgramImages[0]" alt="@Model.Name - день 1" loading="lazy" decoding="async" data-program-image />
             <div>
                 <p class="eyebrow">Выбранный день</p>
                 <h3 data-program-title>День 1</h3>

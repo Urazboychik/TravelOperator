@@ -174,7 +174,6 @@ document.addEventListener("click", (event) => {
     if (text) text.textContent = programDay.dataset.dayText;
     if (image) {
       image.alt = `${document.title} - ${programDay.dataset.dayTitle}`;
-      image.dataset.imageFallbacks = programDay.dataset.dayFallbacks ?? image.dataset.imageFallbacks ?? "";
       image.dataset.fallbackIndex = programDay.dataset.dayImageIndex ?? "0";
       image.src = programDay.dataset.dayImage;
     }

@@ -37,19 +37,15 @@ public static class TourCatalog
                 TourImageAssets.BaikalShamanka
             ],
             ["Иркутск и переезд к Малому морю", "Ледовые гроты и прогулка по прозрачному льду", "Хивус, Ольхон и мыс Хобой", "Свободный день на Ольхоне", "Ледовая рыбалка и термальные источники", "Этно-ужин и местные традиции", "Возвращение в Иркутск"],
-            TourImageAssets.ForProgramDays(
             [
-                TourImageAssets.BaikalIce,
-                TourImageAssets.BaikalOlkhon,
-                TourImageAssets.BaikalShamanka
-            ],
-            [
-                TourImageAssets.BaikalIce,
+                TourImageAssets.BaikalIrkutsk,
+                TourImageAssets.BaikalIceSunset,
                 TourImageAssets.BaikalOlkhon,
                 TourImageAssets.BaikalShamanka,
-                TourImageAssets.BaikalIrkutsk
+                TourImageAssets.BaikalSunset,
+                TourImageAssets.BaikalCircum,
+                TourImageAssets.BaikalPort
             ],
-            7),
             "проживание, трансферы, гид, завтраки, экскурсии по программе"),
         new(
             "altai-adventure",
@@ -68,19 +64,17 @@ public static class TourCatalog
                 TourImageAssets.AltaiRoad
             ],
             ["Горно-Алтайск и заселение", "Чуйский тракт и панорамные остановки", "Рафтинг по Катуни", "Треккинг к горным озёрам", "Подъём к перевалу и смотровые площадки", "Свободный день в lodge-отеле", "Долина рек и каньоны", "Горные маршруты и фотосессии", "Возвращение в Горно-Алтайск"],
-            TourImageAssets.ForProgramDays(
             [
                 TourImageAssets.AltaiMountains,
-                TourImageAssets.AltaiRiver,
-                TourImageAssets.AltaiRoad
-            ],
-            [
-                TourImageAssets.AltaiMountains,
-                TourImageAssets.AltaiRiver,
                 TourImageAssets.AltaiRoad,
-                TourImageAssets.AltaiLodge
+                TourImageAssets.AltaiRiver,
+                TourImageAssets.AltaiBlueLake,
+                TourImageAssets.AltaiAerial,
+                TourImageAssets.AltaiLodge,
+                TourImageAssets.AltaiKuray,
+                TourImageAssets.AltaiPassRoad,
+                TourImageAssets.AltaiChuya
             ],
-            9),
             "проживание, трансферы, инструкторы, страховка, завтраки"),
         new(
             "kamchatka-volcano",
@@ -99,19 +93,18 @@ public static class TourCatalog
                 TourImageAssets.KamchatkaThermal
             ],
             ["Петропавловск-Камчатский", "Подъём к вулканическим плато", "Океанская прогулка по Авачинской бухте", "Термальные источники", "Долина гейзеров (вертолётная опция)", "Морская рыбалка и дегустация", "Восхождение на вулкан", "Свободный день в Петропавловске", "Экскурсия по побережью", "Вылет"],
-            TourImageAssets.ForProgramDays(
             [
                 TourImageAssets.KamchatkaVolcano,
-                TourImageAssets.KamchatkaOcean,
-                TourImageAssets.KamchatkaThermal
-            ],
-            [
-                TourImageAssets.KamchatkaVolcano,
+                TourImageAssets.KamchatkaPlateau,
                 TourImageAssets.KamchatkaOcean,
                 TourImageAssets.KamchatkaThermal,
-                TourImageAssets.KamchatkaPlateau
+                TourImageAssets.KamchatkaGeyser,
+                TourImageAssets.KamchatkaKarymsky,
+                TourImageAssets.KamchatkaUzon,
+                TourImageAssets.KamchatkaIss,
+                TourImageAssets.KamchatkaIssPeninsula,
+                TourImageAssets.KamchatkaValleyLandslide
             ],
-            10),
             "гиды, трансферы, проживание, завтраки, групповое снаряжение"),
         new(
             "dagestan-canyon",
@@ -130,19 +123,14 @@ public static class TourCatalog
                 TourImageAssets.DagestanCaspian
             ],
             ["Махачкала и бархан Сарыкум", "Сулакский каньон", "Горные аулы", "Древние крепости и смотровые", "Каспийское побережье", "Гастро-вечер и отъезд"],
-            TourImageAssets.ForProgramDays(
             [
+                TourImageAssets.DagestanMakhachkala,
                 TourImageAssets.DagestanCanyon,
-                TourImageAssets.DagestanDune,
-                TourImageAssets.DagestanCaspian
-            ],
-            [
-                TourImageAssets.DagestanCanyon,
+                TourImageAssets.DagestanAul,
                 TourImageAssets.DagestanDune,
                 TourImageAssets.DagestanCaspian,
-                TourImageAssets.DagestanAul
+                TourImageAssets.DagestanDerbent
             ],
-            6),
             "отели, гид, трансферы, завтраки, дегустации"),
         new(
             "karelia-weekend",
@@ -156,24 +144,17 @@ public static class TourCatalog
             "Рускеала, северные леса, водопады и короткая перезагрузка на природе.",
             ["Рускеала", "лес", "weekend"],
             [
-                TourImageAssets.KareliaRuskeala,
-                TourImageAssets.KareliaForest,
-                TourImageAssets.KareliaWaterfall
+                TourImageAssets.KareliaLadoga,
+                TourImageAssets.KareliaWaterfall,
+                TourImageAssets.KareliaRuskeala
             ],
             ["Сортавала", "Горный парк Рускеала", "Водопады и лесные маршруты", "Свободное утро"],
-            TourImageAssets.ForProgramDays(
             [
+                TourImageAssets.KareliaSortavala,
                 TourImageAssets.KareliaRuskeala,
-                TourImageAssets.KareliaForest,
-                TourImageAssets.KareliaWaterfall
-            ],
-            [
-                TourImageAssets.KareliaRuskeala,
-                TourImageAssets.KareliaForest,
                 TourImageAssets.KareliaWaterfall,
-                TourImageAssets.KareliaSortavala
+                TourImageAssets.KareliaLadoga
             ],
-            4),
             "отель, завтраки, экскурсии, трансферы"),
         new(
             "sochi-family-resort",
@@ -192,19 +173,16 @@ public static class TourCatalog
                 TourImageAssets.SochiMountains
             ],
             ["Заселение у моря", "Красная Поляна", "Морская прогулка", "Дендрарий и парки Сочи", "Свободный день на пляже", "Семейные экскурсии", "SPA и отдых в отеле", "Отъезд"],
-            TourImageAssets.ForProgramDays(
             [
                 TourImageAssets.SochiSea,
+                TourImageAssets.SochiKrasnayaPolyana,
+                TourImageAssets.SochiSeaView,
+                TourImageAssets.SochiFamily,
                 TourImageAssets.SochiResort,
+                TourImageAssets.SochiBlackSea,
+                TourImageAssets.SochiPort,
                 TourImageAssets.SochiMountains
             ],
-            [
-                TourImageAssets.SochiSea,
-                TourImageAssets.SochiResort,
-                TourImageAssets.SochiMountains,
-                TourImageAssets.SochiFamily
-            ],
-            8),
             "отель, завтраки, трансферы, экскурсии"),
         new(
             "cappadocia-premium",
@@ -223,19 +201,14 @@ public static class TourCatalog
                 TourImageAssets.CappadociaHotel
             ],
             ["Стамбул или Кайсери, переезд", "Долины Каппадокии", "Рассвет с воздушными шарами", "Подземные города и скальные церкви", "Бутик-дегустация", "Свободное время и вылет"],
-            TourImageAssets.ForProgramDays(
             [
-                TourImageAssets.CappadociaBalloons,
+                TourImageAssets.CappadociaGoremePark,
                 TourImageAssets.CappadociaValley,
-                TourImageAssets.CappadociaHotel
-            ],
-            [
                 TourImageAssets.CappadociaBalloons,
-                TourImageAssets.CappadociaValley,
                 TourImageAssets.CappadociaHotel,
-                TourImageAssets.CappadociaTasting
+                TourImageAssets.CappadociaTasting,
+                TourImageAssets.CappadociaAerial
             ],
-            6),
             "бутик-отели, завтраки, трансферы, экскурсии"),
         new(
             "georgia-wine-route",
@@ -254,19 +227,15 @@ public static class TourCatalog
                 TourImageAssets.GeorgiaMountains
             ],
             ["Тбилиси, старый город", "Кахетия и винодельни", "Сигнахи и дегустации", "Горные панорамы Казбеги", "Мцхета и древние монастыри", "Гастро-вечер", "Отъезд"],
-            TourImageAssets.ForProgramDays(
             [
                 TourImageAssets.GeorgiaTbilisi,
                 TourImageAssets.GeorgiaKakheti,
-                TourImageAssets.GeorgiaMountains
-            ],
-            [
-                TourImageAssets.GeorgiaTbilisi,
-                TourImageAssets.GeorgiaKakheti,
+                TourImageAssets.GeorgiaGastro,
                 TourImageAssets.GeorgiaMountains,
-                TourImageAssets.GeorgiaGastro
+                TourImageAssets.GeorgiaJvari,
+                TourImageAssets.GeorgiaVardzia,
+                TourImageAssets.GeorgiaGergetiClouds
             ],
-            7),
             "отели, завтраки, дегустации, трансферы"),
         new(
             "uzbekistan-silk-road",
@@ -285,19 +254,16 @@ public static class TourCatalog
                 TourImageAssets.UzbekistanKhiva
             ],
             ["Самарканд, Регистан", "Мавзолеи и базары Самарканда", "Переезд в Бухару", "Исторический центр Бухары", "Переезд в Хиву", "Ичан-Кала", "Ремесленные мастерские", "Отъезд"],
-            TourImageAssets.ForProgramDays(
             [
                 TourImageAssets.UzbekistanRegistan,
-                TourImageAssets.UzbekistanBukhara,
-                TourImageAssets.UzbekistanKhiva
-            ],
-            [
-                TourImageAssets.UzbekistanRegistan,
+                TourImageAssets.UzbekistanShahizinda,
+                TourImageAssets.UzbekistanWorkshop,
                 TourImageAssets.UzbekistanBukhara,
                 TourImageAssets.UzbekistanKhiva,
-                TourImageAssets.UzbekistanWorkshop
+                TourImageAssets.UzbekistanItchanKala,
+                TourImageAssets.UzbekistanKaltaMinaret,
+                TourImageAssets.UzbekistanChorsu
             ],
-            8),
             "отели, скоростные поезда, гиды, завтраки")
     ];
 }

@@ -1,0 +1,41 @@
+name: Сообщить об ошибке
+description: Что-то работает не так?
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Спасибо за отчёт! Укажите шаги воспроизведения и приложите скриншот, если возможно.
+  - type: textarea
+    id: description
+    attributes:
+      label: Описание
+      description: Что произошло и что ожидалось?
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL страницы
+      placeholder: https://krammyyds-traveloperator.hf.space/Home/Tour?id=...
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Среда
+      options:
+        - Live (Hugging Face)
+        - Локально (dotnet run)
+        - Docker
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Шаги воспроизведения
+      placeholder: |
+        1. Открыть ...
+        2. Нажать ...
+        3. Увидеть ошибку
+    validations:
+      required: true

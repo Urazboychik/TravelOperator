@@ -1,0 +1,29 @@
+name: Предложить улучшение
+description: Идея для новой функции или доработки
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Задача
+      description: Какую проблему решает предложение?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Предлагаемое решение
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Область
+      options:
+        - Публичная витрина
+        - Каталог / туры
+        - Админ-панель
+        - База данных
+        - Деплой / DevOps
+        - Другое

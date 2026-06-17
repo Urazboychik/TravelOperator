@@ -1,127 +1,252 @@
+<div align="center">
+
+<img src=".github/assets/banner.svg" alt="TravelOperator" width="100%"/>
+
+<br/><br/>
+
 # TravelOperator
 
-![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-![Entity Framework Core](https://img.shields.io/badge/Entity%20Framework-Core-6DB33F?style=for-the-badge)
-![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![MVC](https://img.shields.io/badge/Architecture-MVC-0EA5E9?style=for-the-badge)
+**Современная веб-платформа для туристического оператора**  
+Витрина туров, B2B-презентация и административная панель в одном приложении.
 
-**TravelOperator** - дипломный проект веб-платформы для туристической компании: публичная витрина туров, страницы для клиентов и бизнеса, а также административная панель для управления заявками, турами, поставщиками, финансами и операционными процессами.
+<br/>
 
-Проект разработан как учебно-практическая система, приближенная к реальным задачам туроператора: продажа туров, обработка заявок, контроль загрузки, работа с партнерами и визуализация ключевых бизнес-показателей.
+[![Live Demo](https://img.shields.io/badge/🌍_Live_Demo-Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://krammyyds-traveloperator.hf.space)
+[![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![ASP.NET Core MVC](https://img.shields.io/badge/ASP.NET_Core-MVC-0EA5E9?style=for-the-badge)](https://learn.microsoft.com/aspnet/core/mvc/)
+[![EF Core](https://img.shields.io/badge/Entity_Framework-Core-6DB33F?style=for-the-badge)](https://learn.microsoft.com/ef/core/)
+[![SQLite](https://img.shields.io/badge/SQLite-DB-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 
-## Автор
+<br/>
 
-**Разработчик:** Шеркулов Уразбой  
-**Тип проекта:** дипломный проект  
-**Направление:** разработка веб-приложения для автоматизации работы туристического оператора
+[Открыть демо](https://krammyyds-traveloperator.hf.space) · [Быстрый старт](#-быстрый-старт) · [Админ-панель](#-админ-панель) · [Деплой](#-деплой)
 
-## Возможности проекта
+</div>
 
-- Публичная главная страница с современным визуальным оформлением.
-- Каталог туристических направлений с карточками туров, ценами, описанием и деталями.
-- Отдельные сценарии для туристов и предпринимателей.
-- Административная панель с разделами продаж, турпродукта, операций, финансов и настроек.
-- Живая операционная лента и анимированные элементы интерфейса.
-- Поиск по данным админ-панели со всплывающими подсказками.
-- Авторизация в админ-панель по паролю.
-- Локальная SQLite база данных с наполнением для работы системы.
+---
 
-## Использованные технологии
+## О проекте
 
-- **ASP.NET Core 8.0** - основа веб-приложения.
-- **ASP.NET Core MVC** - организация контроллеров, моделей и представлений.
-- **Entity Framework Core** - работа с данными через ORM.
-- **SQLite** - локальная база данных для хранения туров, заявок и партнеров.
-- **Razor Views** - серверная генерация HTML-страниц.
-- **HTML5, CSS3, JavaScript** - интерфейс, анимации, модальные окна и интерактивный поиск.
-- **Bootstrap-подход к UI без зависимости от готового шаблона** - кастомная адаптивная верстка и оформление.
+**TravelOperator** — дипломный проект веб-приложения для автоматизации работы туроператора. Система объединяет публичную витрину, каталог из **9 направлений**, страницу тура с программой по дням и операционную админ-панель с KPI, заявками и финансовыми срезами.
+
+Проект демонстрирует полный цикл: от выбора тура туристом до аналитики для руководителя.
+
+| Роль | Что видит пользователь |
+|------|------------------------|
+| **Турист** | Главная, каталог, карточка тура, учебная заявка |
+| **Предприниматель** | B2B-страница с модулями CRM, финансов и партнёрского портала |
+| **Менеджер** | Админ-панель: продажи, туры, операции, финансы |
+| **Руководитель** | KPI: выручка, загрузка, свободные места, воронка заявок |
+
+---
+
+## Скриншоты
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src=".github/assets/preview-home.png" alt="Главная страница" width="100%"/>
+      <br/><sub><b>Главная</b> — витрина и поиск направлений</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src=".github/assets/preview-catalog.png" alt="Каталог туров" width="100%"/>
+      <br/><sub><b>Каталог</b> — 9 направлений с карточками</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src=".github/assets/preview-tour.png" alt="Страница тура" width="100%"/>
+      <br/><sub><b>Тур</b> — программа по дням и уникальные фото</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src=".github/assets/preview-admin.png" alt="Админ-панель" width="100%"/>
+      <br/><sub><b>Админка</b> — обзор, метрики и вкладки</sub>
+    </td>
+  </tr>
+</table>
+
+<details>
+<summary><b>B2B-страница для бизнеса</b></summary>
+<br/>
+<img src=".github/assets/preview-business.png" alt="Страница для бизнеса" width="100%"/>
+</details>
+
+---
+
+## Возможности
+
+- **Публичная витрина** с адаптивной вёрсткой и тёмной премиальной темой
+- **Каталог из 9 туров**: Байкал, Алтай, Камчатка, Сочи, Грузия, Каппадокия, Дагестан, Карелия, Узбекистан
+- **Программа 4–10 дней** с отдельным фото на каждый день (`ProgramImages`)
+- **69 локальных фотографий** в `wwwroot/images/tours/` — без внешних CDN
+- **Админ-панель** с 6 вкладками: Обзор, Продажи, Туры, Операции, Финансы, Система
+- **SQLite + EF Core** с автосозданием БД и демо-данными при старте
+- **Сессионная авторизация** администратора с CSRF-защитой
+- **Docker** и CI/CD на Hugging Face Spaces
+
+---
+
+## Архитектура
+
+```mermaid
+flowchart TB
+    subgraph Client["Браузер"]
+        UI[HTML / CSS / admin.js]
+    end
+
+    subgraph App["ASP.NET Core 8 MVC"]
+        HC[HomeController]
+        RV[Razor Views]
+        VM[DashboardViewModel]
+        TC[TourCatalog]
+    end
+
+    subgraph Data["Данные"]
+        DB[(SQLite)]
+        EF[EF Core DbContext]
+    end
+
+    UI --> HC
+    HC --> RV
+    HC --> VM
+    HC --> TC
+    HC --> EF
+    EF --> DB
+    TC -. маркетинг .-> RV
+    DB -. операции .-> VM
+```
+
+---
+
+## Стек технологий
+
+| Слой | Технологии |
+|------|------------|
+| Backend | ASP.NET Core 8, MVC, C# 12 |
+| Данные | Entity Framework Core, SQLite |
+| Frontend | Razor, HTML5, CSS3, Vanilla JS |
+| DevOps | Docker, GitHub Actions, Hugging Face Spaces |
+| UI | Кастомный CSS без Bootstrap-шаблонов |
+
+---
+
+## Направления в каталоге
+
+| Тур | Дней | Уровень |
+|-----|------|---------|
+| Байкал: лед и Ольхон | 7 | Комфорт |
+| Алтай Adventure | 9 | Активный |
+| Камчатка: вулканы | 10 | Экспедиция |
+| Сочи для семьи | 8 | Семейный |
+| Грузия: вино и горы | 7 | Гастро |
+| Каппадокия | 6 | Премиум |
+| Дагестан | 6 | Культура |
+| Карелия | 4 | Комфорт |
+| Узбекистан Silk Road | 8 | Культура |
+
+---
+
+## Быстрый старт
+
+**Требования:** [.NET SDK 8.0](https://dotnet.microsoft.com/download)
+
+```bash
+git clone https://github.com/Urazboychik/TravelOperator.git
+cd TravelOperator
+dotnet restore
+dotnet run
+```
+
+Откройте в браузере: **http://localhost:5000**
+
+При первом запуске SQLite-база создаётся автоматически и заполняется демо-данными.
+
+---
+
+## Админ-панель
+
+1. На любой публичной странице нажмите **шестерёнку** в шапке
+2. Введите пароль:
+
+```
+1254
+```
+
+3. Откроется `/Home/Admin` с вкладками продаж, туров и аналитики
+
+---
 
 ## Структура проекта
 
 ```text
 TravelOperator/
-├── Controllers/      # MVC-контроллеры
-├── Data/             # DbContext и начальное наполнение базы
-├── Models/           # Модели предметной области и ViewModel
-├── Views/            # Razor-представления
-├── wwwroot/          # CSS, JavaScript и изображения
-├── Program.cs        # Конфигурация приложения
-└── traveloperator.db # SQLite база приложения
+├── Controllers/           # HomeController — маршруты и логика
+├── Data/                  # DbContext, DemoData.Seed
+├── Models/                # TourPackage, BookingRequest, TourCatalog
+├── Views/                 # Razor: Customer, Offers, Tour, Admin...
+├── wwwroot/
+│   ├── css/               # site.css, admin.css
+│   ├── js/                # admin.js — вкладки, модалки
+│   └── images/tours/      # 69 фото туров + thumbs
+├── .github/
+│   ├── assets/            # Скриншоты и баннер README
+│   └── workflows/         # Деплой HF / Render / Fly.io
+├── Dockerfile
+└── Program.cs
 ```
 
-## Быстрый запуск
+---
 
-Для запуска требуется установленный [.NET SDK 8.0](https://dotnet.microsoft.com/download).
+## Деплой
 
-```bash
-dotnet restore
-dotnet run
-```
+### Hugging Face Spaces (рекомендуется)
 
-После запуска сайт будет доступен по адресу:
+**Live:** [krammyyds-traveloperator.hf.space](https://krammyyds-traveloperator.hf.space)
 
-```text
-http://localhost:5000
-```
+1. Токен: [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) (право **write**)
+2. GitHub → Settings → Secrets → `HF_TOKEN`
+3. Push в `main` или Actions → **Deploy to Hugging Face Space**
 
-## Доступ в админ-панель
-
-На публичной странице в шапке нажмите на значок шестеренки.
-
-```text
-Пароль: 1254
-```
-
-## Назначение системы
-
-Проект показывает, как может выглядеть единая цифровая платформа для туроператора:
-
-- клиент видит красивую витрину и выбирает подходящий тур;
-- менеджер получает заявки и отслеживает продажи;
-- бизнес контролирует загрузку туров, поставщиков и финансы;
-- руководитель видит общую картину по ключевым показателям.
-
-## Особенности реализации
-
-- Приложение построено на MVC-архитектуре, что разделяет бизнес-логику, данные и интерфейс.
-- При первом запуске база создается автоматически и заполняется начальными данными.
-- Интерфейс адаптирован под презентацию дипломного проекта: акцент сделан на наглядность, понятную навигацию и визуальное разделение ролей пользователя.
-- Административная часть содержит имитацию реальных рабочих процессов: заявки, поставщики, задачи, маркетинговые кампании, финансы и настройки.
-
-## Публикация в интернете (бесплатно, без карты)
-
-### Быстрый публичный URL (без регистрации)
+### Локальный публичный URL (без регистрации)
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\start-public.ps1
 ```
 
-Скрипт поднимает сайт и туннель **localhost.run** — карта не нужна. Адрес появится в консоли (вида `https://xxxx.lhr.life`).
+Поднимает туннель **localhost.run** — адрес появится в консоли.
 
-### Render (постоянный URL, без карты)
+### Render / Fly.io
 
-Карта **не нужна**. Бесплатный план, Docker, автодеплой из GitHub.
+См. workflow-файлы в `.github/workflows/` и `fly.toml`.
 
-1. Откройте: [Deploy to Render](https://render.com/deploy?repo=https://github.com/SaShochka/TravelOperator)
-2. Войдите через GitHub → выберите план **Free** → **Apply**.
-3. Через 3–5 минут сайт будет по адресу вида `https://traveloperator.onrender.com`
+---
 
-Ограничение free: сервис «засыпает» после 15 минут без посещений, первый запрос занимает ~1 минуту.
+## Автор
 
-### Hugging Face Spaces (альтернатива, без карты)
+<table>
+  <tr>
+    <td>
+      <b>Шеркулов Уразбой</b><br/>
+      Дипломный проект · Разработка веб-приложения для туристического оператора<br/><br/>
+      <a href="https://github.com/Urazboychik">GitHub</a> ·
+      <a href="https://krammyyds-traveloperator.hf.space">Демо</a>
+    </td>
+  </tr>
+</table>
 
-1. Регистрация: [huggingface.co/join](https://huggingface.co/join) (можно через GitHub).
-2. [Создать Space](https://huggingface.co/new-space) → SDK **Docker** → имя `TravelOperator`.
-3. Settings → Access Tokens → создать токен с правом **write**.
-4. В GitHub репозитория: Settings → Secrets → `HF_TOKEN` = ваш токен.
-5. Actions → **Deploy to Hugging Face Space** → Run workflow.
+---
 
-Адрес: `https://huggingface.co/spaces/Urazboychik/TravelOperator`
+<div align="center">
 
-### Fly.io (нужна привязка карты)
+**Если проект полезен — поставьте звезду на GitHub**
 
-Только если добавлена карта в [Fly Billing](https://fly.io/dashboard). См. `fly.toml` и `.github/workflows/deploy-fly.yml`.
+<br/>
 
-## Статус
+[![GitHub stars](https://img.shields.io/github/stars/Urazboychik/TravelOperator?style=social)](https://github.com/Urazboychik/TravelOperator/stargazers)
 
-Проект готов для защиты дипломной работы и может быть расширен полноценной авторизацией, CRUD-операциями, интеграцией платежей и личным кабинетом туриста.
+<br/>
+
+<sub>Сделано с ASP.NET Core и любовью к путешествиям</sub>
+
+</div>

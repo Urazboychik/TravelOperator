@@ -1219,6 +1219,9 @@ body {
 .program-timeline {
   display: grid;
   gap: 12px;
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 .program-day {

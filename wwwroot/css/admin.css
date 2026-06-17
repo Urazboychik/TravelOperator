@@ -1317,16 +1317,6 @@ body {
   }
 }
 
-@media (max-width: 1180px) {
-  .public-hero {
-    grid-template-columns: 1fr;
-  }
-
-  .public-hero .live-booking-card {
-    max-width: 680px;
-  }
-}
-
 /* Final contrast guard: avoid white text on light badges/cards */
 .ghost,
 .modal-close,
@@ -1709,6 +1699,16 @@ button.ghost {
 .floating-live-card small {
   display: inline-block;
   margin-left: 8px;
+}
+
+@media (max-width: 1180px) {
+  .public-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .public-hero .live-booking-card {
+    max-width: 680px;
+  }
 }
 
 .admin-module-board button {

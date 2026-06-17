@@ -31,9 +31,9 @@ public static class TourCatalog
             "Зимний Байкал с прозрачным льдом, гротами, мысом Хобой и камерными вечерами на Ольхоне.",
             ["ледовые пещеры", "Ольхон", "хивус"],
             [
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Baikal_in_winter.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Olkhon_Island_Lake_Baikal.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Baikal_Ice.jpg?width=1200"
+                TourImageAssets.BaikalIce,
+                TourImageAssets.BaikalOlkhon,
+                TourImageAssets.BaikalShamanka
             ],
             ["Иркутск и переезд к Малому морю", "Ледовые гроты и прогулка по прозрачному льду", "Хивус, Ольхон и мыс Хобой", "Этно-ужин и возвращение"],
             "проживание, трансферы, гид, завтраки, экскурсии по программе"),
@@ -49,9 +49,9 @@ public static class TourCatalog
             "Горные перевалы, бирюзовые озера, рафтинг и lodge-отели среди алтайских пейзажей.",
             ["горы", "рафтинг", "lodge"],
             [
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Belucha_mountain.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Berg_Belucha.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Altai201220120911_0515.jpg?width=1200"
+                TourImageAssets.AltaiMountains,
+                TourImageAssets.AltaiRiver,
+                TourImageAssets.AltaiRoad
             ],
             ["Горно-Алтайск и заселение", "Чуйский тракт и панорамные остановки", "Рафтинг и треккинг к озерам", "Свободный день в lodge-отеле"],
             "проживание, трансферы, инструкторы, страховка, завтраки"),
@@ -67,9 +67,9 @@ public static class TourCatalog
             "Вулканы, Тихий океан, термальные источники и вертолетная опция в Долину гейзеров.",
             ["вулканы", "океан", "термы"],
             [
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Koryaksky_volcano_Petropavlovsk-Kamchatsky_oct-2005.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Kamchatka_three_brothers_rdfr.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/WW_Avachinsky_Bay_and_surroundings.png?width=1200"
+                TourImageAssets.KamchatkaVolcano,
+                TourImageAssets.KamchatkaOcean,
+                TourImageAssets.KamchatkaThermal
             ],
             ["Петропавловск-Камчатский", "Подъем к вулканическим плато", "Океанская прогулка", "Термальные источники"],
             "гиды, трансферы, проживание, завтраки, групповое снаряжение"),
@@ -85,9 +85,9 @@ public static class TourCatalog
             "Сулакский каньон, древние аулы, бархан Сарыкум, Каспий и кавказская кухня.",
             ["каньон", "аулы", "гастрономия"],
             [
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Sulak_Canyon._Mountain_serpentine.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Sulak_Canyon._At_the_cliff.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/%D0%AD%D0%BA%D1%81%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8F_%D0%B2_%D0%94%D0%B0%D0%B3%D0%B5%D1%81%D1%82%D0%B0%D0%BD_(54).jpg?width=1200"
+                TourImageAssets.DagestanCanyon,
+                TourImageAssets.DagestanDune,
+                TourImageAssets.DagestanCaspian
             ],
             ["Махачкала и бархан Сарыкум", "Сулакский каньон", "Горные аулы", "Каспий и гастро-вечер"],
             "отели, гид, трансферы, завтраки, дегустации"),
@@ -103,9 +103,9 @@ public static class TourCatalog
             "Рускеала, северные леса, водопады и короткая перезагрузка на природе.",
             ["Рускеала", "лес", "weekend"],
             [
-                "https://commons.wikimedia.org/wiki/Special:FilePath/0518Ac._Karelia._Ruskeala_Mountain_park.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/0524Ac1._Ruskeala_Mountain_park_in_Karelia.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/0438Fa2._Ruskeala_Park_in_Karelia.jpg?width=1200"
+                TourImageAssets.KareliaRuskeala,
+                TourImageAssets.KareliaForest,
+                TourImageAssets.KareliaWaterfall
             ],
             ["Сортавала", "Горный парк Рускеала", "Водопады и лесные маршруты", "Свободное утро"],
             "отель, завтраки, экскурсии, трансферы"),
@@ -121,9 +121,9 @@ public static class TourCatalog
             "Море, Красная Поляна, семейные экскурсии и проверенные отели без лишней суеты.",
             ["море", "семьи", "отель 4*"],
             [
-                "https://commons.wikimedia.org/wiki/Special:FilePath/RIAN_archive_159143_Sochi.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Blue_flag_beaches_in_Sochi_(Primorskiy).jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Sochi._Sea_station.jpg?width=1200"
+                TourImageAssets.SochiSea,
+                TourImageAssets.SochiResort,
+                TourImageAssets.SochiMountains
             ],
             ["Заселение у моря", "Красная Поляна", "Морская прогулка", "Свободные дни для семьи"],
             "отель, завтраки, трансферы, экскурсии"),
@@ -139,9 +139,9 @@ public static class TourCatalog
             "Бутик-отели в скалах, рассветные шары, долины Каппадокии и камерные дегустации.",
             ["шары", "бутик", "долины"],
             [
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Kapadokya_balon_turları.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Cappadocia_Balloon_Inflating_Wikimedia_Commons.JPG?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Balon_Udara_Cappadocia.jpg?width=1200"
+                TourImageAssets.CappadociaBalloons,
+                TourImageAssets.CappadociaValley,
+                TourImageAssets.CappadociaHotel
             ],
             ["Стамбул или Кайсери", "Долины Каппадокии", "Рассвет с воздушными шарами", "Бутик-дегустация"],
             "бутик-отели, завтраки, трансферы, экскурсии"),
@@ -157,9 +157,9 @@ public static class TourCatalog
             "Кахетия, Тбилиси, горные виды, винодельни и маршруты без туристической суеты.",
             ["вино", "Кахетия", "горы"],
             [
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Ushguli%2C_Svaneti%2C_Georgia.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Kakheti_Georgia_vineyard.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Tbilisi_old_town.jpg?width=1200"
+                TourImageAssets.GeorgiaTbilisi,
+                TourImageAssets.GeorgiaKakheti,
+                TourImageAssets.GeorgiaMountains
             ],
             ["Тбилиси", "Кахетия и винодельни", "Горные панорамы", "Гастро-вечер"],
             "отели, завтраки, дегустации, трансферы"),
@@ -175,9 +175,9 @@ public static class TourCatalog
             "Самарканд, Бухара, Хива, восточные базары, ремесленные мастерские и комфортные переезды.",
             ["Самарканд", "история", "базары"],
             [
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Registan_Samarkand_Uzbekistan.JPG?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Registan_square_Samarkand.jpg?width=1200",
-                "https://commons.wikimedia.org/wiki/Special:FilePath/Sher-Dor_Madrasah_Samarkand.jpg?width=1200"
+                TourImageAssets.UzbekistanRegistan,
+                TourImageAssets.UzbekistanBukhara,
+                TourImageAssets.UzbekistanKhiva
             ],
             ["Самарканд", "Бухара", "Хива", "Ремесленные мастерские"],
             "отели, скоростные поезда, гиды, завтраки")
